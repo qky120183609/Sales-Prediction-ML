@@ -19,7 +19,7 @@ st.markdown("""
 # 加载模型
 @st.cache_resource
 def load_model():
-    return joblib.load("sales_model.pkl")
+    return joblib.load("/mount/src/sales-prediction-ml/main/sales/sales_model.pkl")
 
 model = load_model()
 
