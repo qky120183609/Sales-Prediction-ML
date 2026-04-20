@@ -7,52 +7,37 @@
 ```mermaid
 mindmap
   root((💰 零售销售额<br/>预测系统))
-    📊 数据规模
+    数据规模
       双业务场景数据集
       线下零售订单数据
       在线跨境电商交易数据
       多维度特征工程
-    🔧 功能模块
+    支持功能
       销售额/订单金额预测
       多模型对比 线性回归+随机森林
       网格搜索 GridSearchCV 调参
       特征重要性分析+导出
       单样本预测脚本
-    🏗️ 技术架构
+    技术架构
       Python Pandas/NumPy
       Scikit-learn 机器学习
       Streamlit 交互界面
       MySQL + SQLAlchemy
       Joblib 模型持久化
-    📁 项目结构
+    项目结构
       sales/ 线下零售模块
       online_sales/ 在线零售模块
       *.pkl 训练好的模型
       feature_importance.csv
-    🚀 使用方式
+    使用方式
       本地 pip install -r requirements.txt
       python sales_train.py 训练模型
       streamlit run app.py 启动界面
-    ⚡ 核心亮点
+    核心亮点
       一套框架双场景预测
       清洗→训练→调参→部署全流程
       模型轻量加载快
       云端零成本部署演示
-## 支持功能
-双业务场景：线下零售预测 / 在线跨境零售预测
-多数据源读取：CSV / Excel / MySQL 灵活切换
-模型对比：线性回归 & 随机森林回归训练与评估
-GridSearchCV 自动超参数优化
-模型持久化保存（Joblib）
-特征重要性分析与导出
-Streamlit 交互式可视化部署
-## 技术栈
-语言：Python
-数据分析：Pandas、NumPy
-机器学习：Scikit-learn
-可视化与部署：Streamlit
-数据库：MySQL + SQLAlchemy
-模型序列化：Joblib
 ```
 ## 项目结构
 ```
