@@ -19,7 +19,11 @@ st.markdown("""
 # 加载模型
 @st.cache_resource
 def load_model():
-    return joblib.load("sales_model.pkl")
+    # 获取当前 app.py 所在的文件夹
+    base_dir = os.path.dirname(__file__)
+    # 拼接模型文件路径
+    model_path = os.path.join(base_dir, "sales_model.pkl")
+    return joblib.load(model_path)
 
 model = load_model()
 
