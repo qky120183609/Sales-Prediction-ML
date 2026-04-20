@@ -18,8 +18,7 @@ Streamlit 交互式可视化部署
 数据库：MySQL + SQLAlchemy
 模型序列化：Joblib
 ## 项目结构
-plaintext
-.
+```
 ├── online_sales/               # 在线跨境零售预测模块
 │   ├── app_o.py                # 在线零售预测 Web 界面
 │   ├── online_train.py         # 在线零售模型训练脚本
@@ -41,30 +40,26 @@ plaintext
 │
 ├── README.md                   # 项目说明文档
 └── requirements.txt            # 项目依赖清单
+```
 ## 快速开始
 ### 1.安装依赖
 ```
-plaintext
 pip install -r requirements.txt
 ```
 ### 2.训练线下零售模型
 ```
-plaintext
 python sales_train.py
 ```
 ### 3.训练在线零售模型
 ```
-plaintext
 python online_train.py
 ```
 ### 4.启动线下预测界面
 ```
-plaintext
 streamlit run app.py
 ```
 ### 5.启动在线预测界面
 ```
-plaintext
 streamlit run app_o.py
 ```
 ## 在线演示地址
