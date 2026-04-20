@@ -30,6 +30,7 @@ plt.rcParams['font.sans-serif'] = ['Microsoft YaHei', 'SimHei', 'Arial Unicode M
 plt.rcParams['axes.unicode_minus'] = False
 
 
+
 #----------------------------------------------#
 # 1. 数据读取（支持MySQL和Excel）
 #----------------------------------------------#
@@ -43,8 +44,8 @@ if USE_MYSQL:
     print("数据来源：MySQL数据库")
 else:
     # 从Excel读取
-    df = pd.read_excel("./data/sample_-_superstore.xlsx", sheet_name="Orders")
-    print("数据来源：Excel文件")
+    df = pd.read_csv("retail_sales.csv")
+    print("数据来源：CSV文件")
 
 # 目标变量 + 特征
 target = "Sales"
