@@ -37,12 +37,13 @@ else:
     df = pd.read_csv("retail_online.csv")
     print("数据来源：CSV文件")
 
-df = df.sample(5000, random_state=42)
 
 # 数据清洗
 df = df.dropna(subset=["Quantity", "UnitPrice"])
 df = df[df["Quantity"] > 0]
 df = df[df["UnitPrice"] > 0]
+
+df = df.sample(10000, random_state=2)
 
 # 构造目标：总价
 df["TotalPrice"] = df["Quantity"] * df["UnitPrice"]
@@ -90,30 +91,44 @@ lr_pipe = Pipeline(steps=[
 lr_pipe.fit(X_train,y_train)
 y_pred_lr = lr_pipe.predict(X_test)
 
+print("\n===== 线性回归结果 =====")
+print(f"R²: {r2_score(y_test, y_pred_lr):.3f}")
+print(f"MAE: {mean_absolute_error(y_test, y_pred_lr):.2f}")
+print(f"RMSE: {np.sqrt(mean_squared_error(y_test, y_pred_lr)):.2f}")
+
 #----------------------------------------------#
 # 4. 随机森林模型
 #----------------------------------------------#
 rf_pipe = Pipeline(steps=[
     ("pre", preprocessor),
-    ("model", RandomForestRegressor(random_state=42))
+    ("model", RandomForestRegressor(random_state=2))
 ])
 rf_pipe.fit(X_train,y_train)
 y_pred_rf = rf_pipe.predict(X_test)
+
+print("\n===== 随机森林结果 =====")
+print(f"R²: {r2_score(y_test, y_pred_rf):.3f}")
+print(f"MAE: {mean_absolute_error(y_test, y_pred_rf):.2f}")
+print(f"RMSE: {np.sqrt(mean_squared_error(y_test, y_pred_rf)):.2f}")
 
 #----------------------------------------------#
 # 5. 网格搜索调参
 #----------------------------------------------#
 param_grid = {
-    "model__n_estimators": [10],
-    "model__max_depth": [3]
+    "model__n_estimators": [100],
+    "model__max_depth": [20]
 }
 
 grid = GridSearchCV(rf_pipe, param_grid, cv=3, scoring="r2", n_jobs=1)
 grid.fit(X_train, y_train)
 best_model = grid.best_estimator_
 
+print("\n===== 网格搜索最优参数 =====")
+print(grid.best_params_)
+print(f"最佳交叉验证 R²: {grid.best_score_:.3f}")
+
 #----------------------------------------------#
-# 6. 特征重要性 → 保存成 CSV
+# 6. 特征重要性
 #----------------------------------------------#
 importances = best_model.named_steps["model"].feature_importances_
 ohe = best_model.named_steps["pre"].transformers_[1][1].named_steps["onehot"]
@@ -127,6 +142,9 @@ imp_df = pd.DataFrame({
 
 # 保存特征重要性
 imp_df.to_csv("online_feature_importance.csv", index=False)
+
+print("\n特征重要性 TOP10")
+print(imp_df)
 
 #----------------------------------------------#
 # 7. 保存模型
