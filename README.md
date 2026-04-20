@@ -18,7 +18,6 @@ Streamlit 交互式可视化部署
 数据库：MySQL + SQLAlchemy
 模型序列化：Joblib
 ## 项目结构
-```
 plaintext
 .
 ├── online_sales/               # 在线跨境零售预测模块
@@ -42,7 +41,6 @@ plaintext
 │
 ├── README.md                   # 项目说明文档
 └── requirements.txt            # 项目依赖清单
-```
 ## 快速开始
 ### 1.安装依赖
 ```
