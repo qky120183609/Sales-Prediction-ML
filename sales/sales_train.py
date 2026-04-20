@@ -150,16 +150,6 @@ importance_df = pd.DataFrame({
 print("\n特征重要性 TOP10")
 print(importance_df)
 
-# 保存特征重要性
-importance_df.to_csv("feature_importance.csv", index=False)
-
-# 绘制特征重要性图
-plt.figure(figsize=(10,6))
-sns.barplot(x='importance', y='feature', data=importance_df)
-plt.title('TOP10 重要特征')
-plt.tight_layout()
-plt.show()
-
 #----------------------------------------------#
 # 7. 保存最优模型
 #----------------------------------------------#
