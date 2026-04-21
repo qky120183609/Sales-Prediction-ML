@@ -33,11 +33,10 @@ st.divider()
 col1, col2 = st.columns(2)
 with col1:
     Quantity = st.number_input("销售数量", 1, 20, 5)
-
-
-with col2:
     Category = st.selectbox("类别", ["Technology", "Furniture", "Office Supplies"])
     Sub_Category = st.selectbox("子类别", [
+
+with col2:
     "Phones", "Chairs", "Binders", "Paper", "Art", "Storage",
     "Tables", "Bookcases", "Appliances", "Fasteners", "Labels",
     "Envelopes", "Furnishings", "Accessories", "Supplies",
@@ -51,16 +50,35 @@ with col2:
     st.caption("💰 价格信息")
     Avg_Unit_Price = st.number_input("平均单价 (元/件)", 1.0, 5000.0, 100.0, step=10.0)
 
+# 折扣滑块（放在界面底部，按钮上方）
+st.subheader("💰 折扣设置")
+Discount = st.slider("选择折扣比例", 0.0, 0.5, 0.0, 0.05, format="%.0f%%")
+
 # 预测
-if st.button("推荐最优折扣", type="primary"):
-    best_discount = 0
-    best_profit = -999
+if st.button("预测利润", type="primary"):
+    df = pd.DataFrame({
+        "Quantity": [Quantity],
+        "Discount": [Discount],
+        "Avg_Unit_Price": [Avg_Unit_Price], 
+        "Category": [Category],
+        "Sub-Category": [Sub_Category],
+        "Region": [Region],
+        "Segment": [Segment],
+        "Ship Mode": [Ship_Mode]
+    })
+    profit = model.predict(df)[0]
     
-    for discount in [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4]:
-        df = pd.DataFrame({
+    # 显示当前折扣的利润
+    st.info(f"💰 当前折扣 **{int(Discount*100)}%** 下，预期利润：**¥ {round(profit, 2)}**")
+    
+    # 计算最优折扣作为参考
+    best_discount = 0
+    best_profit = -float("inf")
+    for d in [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5]:
+        temp_df = pd.DataFrame({
             "Quantity": [Quantity],
-            "Discount": [discount],
-            "Avg_Unit_Price": [Avg_Unit_Price], 
+            "Discount": [d],
+            "Avg_Unit_Price": [Avg_Unit_Price],
             "Profit": [0],
             "Category": [Category],
             "Sub-Category": [Sub_Category],
@@ -68,10 +86,12 @@ if st.button("推荐最优折扣", type="primary"):
             "Segment": [Segment],
             "Ship Mode": [Ship_Mode]
         })
-        profit = model.predict(df)[0]
-        if profit > best_profit:
-            best_profit = profit
-            best_discount = discount
+        p = model.predict(temp_df)[0]
+        if p > best_profit:
+            best_profit = p
+            best_discount = d
     
-    st.success(f"推荐折扣：{int(best_discount * 100)}%")
-    st.info(f"预期利润：¥ {round(best_profit, 2)}")
+    if best_discount != Discount:
+        st.success(f"提示：折扣 **{int(best_discount*100)}%** 可获得更高利润（¥{round(best_profit, 2)}）")
+    else:
+        st.success(f"当前折扣已是利润最优选择！")
