@@ -69,7 +69,7 @@ if st.button("预测利润", type="primary"):
     profit = model.predict(df)[0]
     
     # 显示当前折扣的利润
-    st.info(f"💰 当前折扣 **{int(Discount*100)}%** 下，预期利润：**¥ {round(profit, 2)}**")
+    st.info(f"💰 成本 ¥{Cost:.2f} | 毛利率 {Gross_Margin:.1%} | 折扣 {int(Discount*100)}% 下，预期利润：**¥ {round(profit, 2)}**")
     
     # 推荐最佳地区
     best_region = None
