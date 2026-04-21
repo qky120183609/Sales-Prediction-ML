@@ -87,9 +87,9 @@ if st.button("预测利润", type="primary"):
         st.metric("📊 销售额", f"¥ {round(Actual_Price * Quantity, 2)}")
     
     if diff > 0:
-        st.success(f"模型预测利润大于数学利润，模型预测乐观：产品竞争力大于模型预测")
+        st.success(f"模型预测利润大于数学利润，模型认为该条件能获得的足够的数学利润，若差值较多可以调整变为更高利润")
     elif diff < 0:
-        st.warning(f"模型预测利润小于数学利润，模型预测悲观：产品竞争力小于模型预测")
+        st.warning(f"模型预测利润小于数学利润，模型认为该条件不能获得的足够的数学利润，若差值较多需要调整变为更低利润")
     else:
         st.info(f"与模型预测完全相符")=
     
