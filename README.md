@@ -14,7 +14,7 @@
 ## 项目概览
 
 ```mermaid
-  root((💰 线下零售<br/>利润预测系统))
+    root((零售利润预测系统))
     数据规模
       零售订单数据集
       多维度特征工程
@@ -23,17 +23,17 @@
       订单利润预测
       折扣合理性分析
       最优销售区域推荐
-      数学利润vs模型预测对比
+      数学利润对比模型预测
     技术架构
-      Python Pandas/NumPy
-      Scikit-learn 机器学习
-      Streamlit 交互界面
-      Joblib 模型持久化
-      Pipeline 特征工程流水线
+      Python Pandas
+      Scikit-learn
+      Streamlit
+      Joblib
+      Pipeline
     模型对比
-      线性回归 基线模型
-      随机森林 主力模型
-      GridSearchCV 超参数调优
+      线性回归
+      随机森林
+      GridSearchCV
     业务洞察
       高折扣率亏损分析
       特征重要性排序
