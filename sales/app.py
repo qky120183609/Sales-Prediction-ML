@@ -68,7 +68,7 @@ if st.button("推荐最优折扣", type="primary"):
             "Segment": [Segment],
             "Ship Mode": [Ship_Mode]
         })
-                profit = model.predict(df)[0]
+        profit = model.predict(df)[0]
         if profit > best_profit:
             best_profit = profit
             best_discount = discount
