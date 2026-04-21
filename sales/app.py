@@ -63,26 +63,26 @@ if st.button("预测利润", type="primary"):
     # 显示当前折扣的利润
     st.info(f"💰 当前折扣 **{int(Discount*100)}%** 下，预期利润：**¥ {round(profit, 2)}**")
     
-    # 计算最优折扣作为参考
-    best_discount = 0
+    # 推荐最佳地区
+    best_region = None
     best_profit = -float("inf")
-    for d in [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5]:
+    for r in ["Central", "West", "East", "South"]:
         temp_df = pd.DataFrame({
             "Quantity": [Quantity],
-            "Discount": [d],
+            "Discount": [Discount],
             "Avg_Unit_Price": [Avg_Unit_Price],
             "Category": [Category],
             "Sub-Category": [Sub_Category],
-            "Region": [Region],
+            "Region": [r],
             "Segment": [Segment],
             "Ship Mode": [Ship_Mode]
         })
         p = model.predict(temp_df)[0]
         if p > best_profit:
             best_profit = p
-            best_discount = d
+            best_region = r
     
-    if best_discount != Discount:
-        st.success(f"提示：折扣 **{int(best_discount*100)}%** 可获得更高利润（¥{round(best_profit, 2)}）")
+    if best_region != Region:
+        st.info(f"📍 提示：**{best_region}** 地区可获得更高利润（¥{round(best_profit, 2)}）")
     else:
-        st.success(f"当前折扣已是利润最优选择！")
+        st.success(f"当前地区已是利润最优选择！")
