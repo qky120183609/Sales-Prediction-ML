@@ -38,38 +38,3 @@ df1.to_sql(
     index=False
 )
 print("超市数据清洗完成，数据已导入 MySQL")
-
-#-------------------------------------------------------#
-#-------------------------------------------------------#
-
-print("正在导入在线零售数据...")
-df2 = pd.read_csv(os.path.join(BASE_DIR, "csv/Online Retail.csv"))
-
-#---------------------------------------------#
-
-df2 = df2.drop_duplicates()
-df2 = df2.dropna(subset = ["InvoiceNo", "StockCode", "Quantity", "UnitPrice"])
-df2['InvoiceDate'] = pd.to_datetime(df2['InvoiceDate'],errors='coerce')
-
-df2 = df2[df2["Quantity"] > 0]
-df2 = df2[df2["UnitPrice"] > 0]
-df2 = df2[df2["Quantity"] * df2["UnitPrice"] >= 0.01]
-
-df2 = df2.reset_index(drop=True)
-
-#---------------------------------------------#
-
-df2 = df2[(df2["Quantity"] > 0) & (df2["UnitPrice"] > 0)]
-df2.to_sql(
-    name="online_retail",
-    con=engine,
-    if_exists="append",
-    index=False
-)
-
-print("在线零售数据清洗完成，数据已导入 MySQL")
-
-#-------------------------------------------------------#
-#-------------------------------------------------------#
-
-print("所有表清洗+导入MySQL全部完成")
