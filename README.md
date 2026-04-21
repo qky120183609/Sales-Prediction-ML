@@ -12,8 +12,7 @@
 项目包含完整的数据清洗、特征工程、多模型对比、网格搜索调参、特征重要性分析，并提供Streamlit交互式Web界面，可直接部署使用。
 
 ## 项目概览
-
-```mermaid
+```
 mindmap
   root((💰 线下零售<br/>利润预测系统))
     数据规模
@@ -36,13 +35,13 @@ mindmap
       随机森林 主力模型
       GridSearchCV 超参数调优
     业务洞察
-      高折扣(>50%)亏损率分析
+      高折扣率亏损分析
       特征重要性排序
       区域利润差异分析
     使用方式
-      pip install -r requirements.txt
-      python train_model.py 训练模型
-      streamlit run app.py 启动界面
+      pip安装依赖
+      python训练模型
+      streamlit启动界面
 ```
 ## 核心功能
 ### 1. 模型训练模块
