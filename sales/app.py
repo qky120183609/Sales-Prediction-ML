@@ -46,9 +46,6 @@ with col2:
     Segment = st.selectbox("客户类型", ["Consumer", "Corporate", "Home Office"])
     Ship_Mode = st.selectbox("运输方式", ["Standard Class", "Second Class", "First Class", "Same Day"])
 
-    st.divider()
-    st.caption("💰 价格信息")
-
 # 预测
 if st.button("预测利润", type="primary"):
     df = pd.DataFrame({
