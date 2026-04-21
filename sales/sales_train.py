@@ -50,7 +50,7 @@ else:
 # 目标变量 + 特征
 target = "Sales"
 numeric_features = ["Quantity", "Discount", "Profit"]
-categorical_features = ["Category", "Sub-Category", "Region", "Segment"]
+categorical_features = ["Category", "Sub-Category", "Region", "Segment", "Ship Mode"]
 
 X = df[numeric_features + categorical_features]
 y = df[target]
