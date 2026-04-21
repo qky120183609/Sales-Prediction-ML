@@ -1,7 +1,9 @@
 # 线下零售利润预测与折扣优化
 
 本项目通过机器学习模型（随机森林 + 线性回归）对线下零售订单的利润进行预测，并结合折扣策略分析，提供定价优化建议。项目包含数据清洗、模型训练、特征重要性分析、Streamlit 可视化界面，支持 MySQL 数据导入与 CSV 导出。
-## 项目流程图
+## 在线演示
+(https://qky-sales-prediction-app.streamlit.app/)
+## 项目导图
 
 ```mermaid
 mindmap
