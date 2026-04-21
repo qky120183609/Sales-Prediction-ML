@@ -91,11 +91,7 @@ if st.button("预测利润", type="primary"):
     elif diff < 0:
         st.warning(f"模型预测利润小于数学利润，模型预测悲观：产品竞争力小于模型预测")
     else:
-        st.info(f"与模型预测完全相符")
-    
-    # 差值过大警告
-    if abs(diff) > abs(formula_profit) * 0.5:
-        st.error("🚨 差值过大，预测可能不准确")
+        st.info(f"与模型预测完全相符")=
     
     st.divider()
     
