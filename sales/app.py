@@ -62,6 +62,9 @@ if st.button("预测利润", type="primary"):
     
     # 显示当前折扣的利润
     st.info(f"💰 当前折扣 **{int(Discount*100)}%** 下，预期利润：**¥ {round(profit, 2)}**")
+    original_price = Avg_Unit_Price
+    discounted_price = Avg_Unit_Price * (1 - Discount)
+    st.caption(f"📊 原价：¥{round(original_price, 2)}/件 | 折扣价：¥{round(discounted_price, 2)}/件")
     
     # 推荐最佳地区
     best_region = None
