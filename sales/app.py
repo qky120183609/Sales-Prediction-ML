@@ -35,7 +35,6 @@ with col1:
     Quantity = st.number_input("销售数量", 1, 20, 5)
     Avg_Unit_Price = st.number_input("平均单价 (元/件)", 1.0, 5000.0, 100.0, step=10.0)
     Discount = st.slider("选择折扣比例 (%)", 0, 50, 0, 10, key="discount_slider") / 100
-    st.subheader("💰 成本信息")
     Cost = st.number_input("商品成本 (元/件)", min_value=0.1, max_value=5000.0, value=50.0, step=10.0)
 
 with col2:
