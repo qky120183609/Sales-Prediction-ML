@@ -83,7 +83,7 @@ if st.button("预测利润", type="primary"):
         st.metric("📐 数学利润", f"¥ {round(formula_profit, 2)}")
         st.metric("🤖 模型预测利润", f"¥ {round(profit, 2)}", delta=f"{round(diff, 2)}")
     with col_b:
-        st.metric("💰 成本", f"¥ {Cost:.2f}")
+        st.metric("💰 毛利率", f"{Gross_Margin:.1%}")
         st.metric("📊 销售额", f"¥ {round(Actual_Price * Quantity, 2)}")
     
     if diff > 0:
