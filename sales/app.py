@@ -37,7 +37,12 @@ with col1:
 
 with col2:
     Category = st.selectbox("类别", ["Technology", "Furniture", "Office Supplies"])
-    Sub_Category = st.selectbox("子类别", ["Phones", "Chairs", "Binders", "Paper", "Art", "Storage", "Tables", "Bookcases", "Appliances", "Fasteners", "Labels", "Envelopes", "Furnishings", "Accessories", "Supplies", "Machines", "Copiers"])
+    Sub_Category = st.selectbox("子类别", [
+    "Phones", "Chairs", "Binders", "Paper", "Art", "Storage",
+    "Tables", "Bookcases", "Appliances", "Fasteners", "Labels",
+    "Envelopes", "Furnishings", "Accessories", "Supplies",
+    "Machines", "Copiers", "Furniture", "Office Supplies"
+])
     Region = st.selectbox("地区", ["Central", "West", "East", "South"])
     Segment = st.selectbox("客户类型", ["Consumer", "Corporate", "Home Office"])
     Ship_Mode = st.selectbox("运输方式", ["Standard Class", "Second Class", "First Class", "Same Day"])
