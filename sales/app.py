@@ -34,7 +34,7 @@ col1, col2 = st.columns(2)
 with col1:
     Quantity = st.number_input("销售数量", 1, 20, 5)
     Avg_Unit_Price = st.number_input("平均单价 (元/件)", 1.0, 5000.0, 100.0, step=10.0)
-    Discount = st.slider("选择折扣比例", 0.0, 0.5, 0.0, 0.05, format="%.0f", key="discount_slider")
+    Discount = st.slider("选择折扣比例 (%)", 0, 50, 0, 5, key="discount_slider") / 100
     Category = st.selectbox("类别", ["Technology", "Furniture", "Office Supplies"])
 with col2:
     Sub_Category = st.selectbox("子类别", [    "Phones", "Chairs", "Binders", "Paper", "Art", "Storage",
