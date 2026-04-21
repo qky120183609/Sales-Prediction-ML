@@ -54,10 +54,12 @@ with col2:
 
 # 预测
 if st.button("预测利润", type="primary"):
+    Gross_Margin = (Avg_Unit_Price - Cost) / Avg_Unit_Price if Avg_Unit_Price > 0 else 0
     df = pd.DataFrame({
         "Quantity": [Quantity],
         "Discount": [Discount],
-        "Avg_Unit_Price": [Avg_Unit_Price], 
+        "Avg_Unit_Price": [Avg_Unit_Price],
+        "Gross_Margin": [Gross_Margin],
         "Category": [Category],
         "Sub-Category": [Sub_Category],
         "Region": [Region],
