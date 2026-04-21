@@ -34,8 +34,8 @@ col1, col2 = st.columns(2)
 with col1:
     Quantity = st.number_input("销售数量", 1, 20, 5)
     Avg_Unit_Price = st.number_input("平均单价 (元/件)", 1.0, 5000.0, 100.0, step=10.0)
-    Discount = st.slider("选择折扣比例 (%)", 0, 50, 0, 10, key="discount_slider") / 100
     Cost = st.number_input("商品成本 (元/件)", min_value=0.1, max_value=5000.0, value=50.0, step=10.0)
+    Discount = st.slider("选择折扣比例 (%)", 0, 50, 0, 10, key="discount_slider") / 100
 
 with col2:
     Category = st.selectbox("类别", ["Technology", "Furniture", "Office Supplies"])
@@ -71,7 +71,7 @@ if st.button("预测利润", type="primary"):
  
     
     # 显示当前折扣的利润
-    st.info(f"💰 成本 ¥{Cost:.2f} | 毛利率 {Gross_Margin:.1%} | 折扣 {int(Discount*100)}% 下，预期利润：**¥ {round(profit, 2)}**")
+    st.info(f"💰 成本 ¥{Cost:.2f}  |  毛利率 {Gross_Margin:.1%}  |  预期利润：**¥ {round(profit, 2)}**")
     
     # 推荐最佳地区
     best_region = None
