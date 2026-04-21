@@ -1,26 +1,23 @@
-markdown
 # 线下零售利润预测与折扣优化
 
 本项目通过机器学习模型（随机森林 + 线性回归）对线下零售订单的利润进行预测，并结合折扣策略分析，提供定价优化建议。项目包含数据清洗、模型训练、特征重要性分析、Streamlit 可视化界面，支持 MySQL 数据导入与 CSV 导出。
 
 ## 项目结构
-├── sales/ # 核心模块：模型训练与预测
-│ ├── app.py # Streamlit 前端交互界面
-│ ├── sales_train.py # 模型训练与评估脚本
-│ ├── export_to_csv_s.py # MySQL 数据导出为 CSV
-│ ├── sales_model.pkl # 训练好的随机森林模型
-│ ├── feature_importance.csv # 特征重要性排序
-│ ├── model_config.csv # 模型最佳参数与评估结果
-│ ├── model_metrics.xlsx # 模型指标汇总
-│ └── retail_sales.csv # 原始数据（CSV 格式）
-├── xlsx/ # Excel 数据导入模块
-│ ├── retail_sales.py # 数据清洗并导入 MySQL
-│ ├── sample_-_superstore.xlsx # 示例数据源
-│ └── README.md
-├── requirements.txt # Python 依赖
-└── README.md # 项目说明（本文件）
-
-text
+  ├── sales/ # 核心模块：模型训练与预测
+  │ ├── app.py # Streamlit 前端交互界面
+  │ ├── sales_train.py # 模型训练与评估脚本
+  │ ├── export_to_csv_s.py # MySQL 数据导出为 CSV
+  │ ├── sales_model.pkl # 训练好的随机森林模型
+  │ ├── feature_importance.csv # 特征重要性排序
+  │ ├── model_config.csv # 模型最佳参数与评估结果
+  │ ├── model_metrics.xlsx # 模型指标汇总
+  │ └── retail_sales.csv # 原始数据（CSV 格式）
+  ├── xlsx/ # Excel 数据导入模块
+  │ ├── retail_sales.py # 数据清洗并导入 MySQL
+  │ ├── sample_-_superstore.xlsx # 示例数据源
+  │ └── README.md
+  ├── requirements.txt # Python 依赖
+  └── README.md # 项目说明（本文件）
 
 ## 功能特点
 
