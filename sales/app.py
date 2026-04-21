@@ -34,14 +34,12 @@ col1, col2 = st.columns(2)
 with col1:
     Quantity = st.number_input("销售数量", 1, 20, 5)
     Category = st.selectbox("类别", ["Technology", "Furniture", "Office Supplies"])
-    Sub_Category = st.selectbox("子类别", [
-
-with col2:
-    "Phones", "Chairs", "Binders", "Paper", "Art", "Storage",
+    Sub_Category = st.selectbox("子类别", [    "Phones", "Chairs", "Binders", "Paper", "Art", "Storage",
     "Tables", "Bookcases", "Appliances", "Fasteners", "Labels",
     "Envelopes", "Furnishings", "Accessories", "Supplies",
     "Machines", "Copiers", "Furniture", "Office Supplies"
 ])
+with col2:
     Region = st.selectbox("地区", ["Central", "West", "East", "South"])
     Segment = st.selectbox("客户类型", ["Consumer", "Corporate", "Home Office"])
     Ship_Mode = st.selectbox("运输方式", ["Standard Class", "Second Class", "First Class", "Same Day"])
