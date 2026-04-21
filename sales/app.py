@@ -52,8 +52,9 @@ with col2:
 
 
 if st.button("预测利润", type="primary"):
-    # 计算毛利率
-    Gross_Margin = (Avg_Unit_Price - Cost) / Avg_Unit_Price if Avg_Unit_Price > 0 else 0
+    # 考虑折扣，计算实际毛利率
+    Actual_Price = Avg_Unit_Price * (1 - Discount)
+    Gross_Margin = (Actual_Price - Cost) / Actual_Price if Actual_Price > 0 else 0
     
     # 创建预测数据
     df = pd.DataFrame({
