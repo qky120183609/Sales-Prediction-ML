@@ -47,6 +47,10 @@ with col2:
     Segment = st.selectbox("客户类型", ["Consumer", "Corporate", "Home Office"])
     Ship_Mode = st.selectbox("运输方式", ["Standard Class", "Second Class", "First Class", "Same Day"])
 
+    st.divider()
+    st.caption("💰 价格信息")
+    Avg_Unit_Price = st.number_input("平均单价 (元/件)", 1.0, 5000.0, 100.0, step=10.0)
+
 # 预测
 if st.button("推荐最优折扣", type="primary"):
     best_discount = 0
@@ -56,6 +60,7 @@ if st.button("推荐最优折扣", type="primary"):
         df = pd.DataFrame({
             "Quantity": [Quantity],
             "Discount": [discount],
+            "Avg_Unit_Price": [Avg_Unit_Price], 
             "Profit": [0],
             "Category": [Category],
             "Sub-Category": [Sub_Category],
@@ -63,7 +68,7 @@ if st.button("推荐最优折扣", type="primary"):
             "Segment": [Segment],
             "Ship Mode": [Ship_Mode]
         })
-        profit = model.predict(df)[0]
+                profit = model.predict(df)[0]
         if profit > best_profit:
             best_profit = profit
             best_discount = discount
