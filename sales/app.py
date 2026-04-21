@@ -69,10 +69,35 @@ if st.button("预测利润", type="primary"):
         "Ship Mode": [Ship_Mode]
     })
     profit = model.predict(df)[0]
+    # 计算数学利润和差值
+    formula_profit = (Actual_Price - Cost) * Quantity
+    diff = profit - formula_profit
  
     
-    # 显示当前折扣的利润
-    st.info(f"💰 成本 ¥{Cost:.2f} | 毛利率 {Gross_Margin:.1%} | 预期利润：**¥ {round(profit, 2)}**")
+    # 显示定价合理性分析
+    st.divider()
+    st.subheader("📊 定价合理性分析")
+    
+    col_a, col_b = st.columns(2)
+    with col_a:
+        st.metric("📐 数学利润", f"¥ {round(formula_profit, 2)}")
+        st.metric("🤖 模型预测利润", f"¥ {round(profit, 2)}", delta=f"{round(diff, 2)}")
+    with col_b:
+        st.metric("💰 成本", f"¥ {Cost:.2f}")
+        st.metric("📊 销售额", f"¥ {round(Actual_Price * Quantity, 2)}")
+    
+    if diff > 0:
+        st.success(f"✅ 乐观：定价可提高 ¥ {round(diff, 2)}")
+    elif diff < 0:
+        st.warning(f"⚠️ 悲观：建议降价 ¥ {round(abs(diff), 2)}")
+    else:
+        st.info(f"ℹ️ 定价合理")
+    
+    # 差值过大警告
+    if abs(diff) > abs(formula_profit) * 0.5:
+        st.error("🚨 差值过大，预测可能不准确")
+    
+    st.divider()
     
     # 推荐最佳地区
     best_region = None
