@@ -52,20 +52,24 @@ with col2:
 
 
 
-# 预测
-    for r in ["Central", "West", "East", "South"]:
-        temp_df = pd.DataFrame({
-            "Quantity": [Quantity],
-            "Discount": [Discount],
-            "Avg_Unit_Price": [Avg_Unit_Price],
-            "Gross_Margin": [Gross_Margin],
-            "Category": [Category],
-            "Sub-Category": [Sub_Category],
-            "Region": [r],
-            "Segment": [Segment],
-            "Ship Mode": [Ship_Mode]
+if st.button("预测利润", type="primary"):
+    # 计算毛利率
+    Gross_Margin = (Avg_Unit_Price - Cost) / Avg_Unit_Price if Avg_Unit_Price > 0 else 0
+    
+    # 创建预测数据
+    df = pd.DataFrame({
+        "Quantity": [Quantity],
+        "Discount": [Discount],
+        "Avg_Unit_Price": [Avg_Unit_Price],
+        "Gross_Margin": [Gross_Margin],
+        "Category": [Category],
+        "Sub-Category": [Sub_Category],
+        "Region": [Region],
+        "Segment": [Segment],
+        "Ship Mode": [Ship_Mode]
     })
     profit = model.predict(df)[0]
+ 
     
     # 显示当前折扣的利润
     st.info(f"💰 成本 ¥{Cost:.2f} | 毛利率 {Gross_Margin:.1%} | 折扣 {int(Discount*100)}% 下，预期利润：**¥ {round(profit, 2)}**")
@@ -78,6 +82,7 @@ with col2:
             "Quantity": [Quantity],
             "Discount": [Discount],
             "Avg_Unit_Price": [Avg_Unit_Price],
+            "Gross_Margin": [Gross_Margin],  # 新增
             "Category": [Category],
             "Sub-Category": [Sub_Category],
             "Region": [r],
