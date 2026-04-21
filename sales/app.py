@@ -33,24 +33,21 @@ st.divider()
 col1, col2 = st.columns(2)
 with col1:
     Quantity = st.number_input("销售数量", 1, 20, 5)
+    Avg_Unit_Price = st.number_input("平均单价 (元/件)", 1.0, 5000.0, 100.0, step=10.0)
+    Discount = st.slider("选择折扣比例", 0.0, 0.5, 0.0, 0.05, format="%.0f%%", key="discount_slider")
     Category = st.selectbox("类别", ["Technology", "Furniture", "Office Supplies"])
-    Sub_Category = st.selectbox("子类别", [    "Phones", "Chairs", "Binders", "Paper", "Art", "Storage",
-    "Tables", "Bookcases", "Appliances", "Fasteners", "Labels",
-    "Envelopes", "Furnishings", "Accessories", "Supplies",
-    "Machines", "Copiers", "Furniture", "Office Supplies"
-])
 with col2:
+    Sub_Category = st.selectbox("子类别", [    "Phones", "Chairs", "Binders", "Paper", "Art", "Storage",
+        "Tables", "Bookcases", "Appliances", "Fasteners", "Labels",
+        "Envelopes", "Furnishings", "Accessories", "Supplies",
+        "Machines", "Copiers", "Furniture", "Office Supplies"
+    ])
     Region = st.selectbox("地区", ["Central", "West", "East", "South"])
     Segment = st.selectbox("客户类型", ["Consumer", "Corporate", "Home Office"])
     Ship_Mode = st.selectbox("运输方式", ["Standard Class", "Second Class", "First Class", "Same Day"])
 
     st.divider()
     st.caption("💰 价格信息")
-    Avg_Unit_Price = st.number_input("平均单价 (元/件)", 1.0, 5000.0, 100.0, step=10.0)
-
-# 折扣滑块（放在界面底部，按钮上方）
-st.subheader("💰 折扣设置")
-Discount = st.slider("选择折扣比例", 0.0, 0.5, 0.0, 0.05, format="%.0f%%")
 
 # 预测
 if st.button("预测利润", type="primary"):
