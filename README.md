@@ -64,51 +64,45 @@ text
 
 ```bash
 pip install -r requirements.txt
-2. 运行 Streamlit 界面
-bash
+```
+### 2. 运行 Streamlit 界面
+```
 cd sales
 streamlit run app.py
-3. 训练新模型（可选）
-bash
+```
+### 3. 训练新模型（可选）
+```
 cd sales
 python sales_train.py
-4. 从 MySQL 导出数据（可选）
-bash
+```
+### 4. 从 MySQL 导出数据（可选）
+```
 cd sales
 python export_to_csv_s.py
-5. 导入 Excel 数据到 MySQL（可选）
-bash
+```
+### 5. 导入 Excel 数据到 MySQL（可选）
+```
 cd xlsx
 python retail_sales.py
+```
 注意：MySQL 连接信息请在脚本中修改（如 export_to_csv_s.py 和 retail_sales.py）
 
-界面预览
-输入销售数量、单价、成本、折扣比例
+## 界面预览
+- 输入销售数量、单价、成本、折扣比例
+- 选择商品类别、子类别、地区、客户类型、运输方式
+- 点击"预测利润"：
+- 显示数学模型利润与模型预测利润
+- 给出定价合理性分析
+- 推荐最优销售地区
 
-选择商品类别、子类别、地区、客户类型、运输方式
+## 依赖环境
+- Python 3.8+
+- pandas, numpy, scikit-learn
+- streamlit, joblib
+- sqlalchemy, pymysql
+- matplotlib, seaborn
 
-点击"预测利润"：
-
-显示数学模型利润与模型预测利润
-
-给出定价合理性分析
-
-推荐最优销售地区
-
-依赖环境
-Python 3.8+
-
-pandas, numpy, scikit-learn
-
-streamlit, joblib
-
-sqlalchemy, pymysql（可选）
-
-matplotlib, seaborn（仅训练脚本）
-
-数据来源
-示例数据：xlsx/sample_-_superstore.xlsx（Tableau 公开超市数据）
-
-清洗后数据：sales/retail_sales.csv
-
-数据库表：sales_data.retail_sales
+## 数据来源
+- 示例数据：xlsx/sample_-_superstore.xlsx（Tableau 公开超市数据）
+- 清洗后数据：sales/retail_sales.csv
+- 数据库表：sales_data.retail_sales
