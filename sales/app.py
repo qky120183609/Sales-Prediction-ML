@@ -35,8 +35,11 @@ with col1:
     Quantity = st.number_input("销售数量", 1, 20, 5)
     Avg_Unit_Price = st.number_input("平均单价 (元/件)", 1.0, 5000.0, 100.0, step=10.0)
     Discount = st.slider("选择折扣比例 (%)", 0, 50, 0, 10, key="discount_slider") / 100
-    Category = st.selectbox("类别", ["Technology", "Furniture", "Office Supplies"])
+    st.subheader("💰 成本信息")
+    Cost = st.number_input("商品成本 (元/件)", min_value=0.1, max_value=5000.0, value=50.0, step=10.0)
+
 with col2:
+    Category = st.selectbox("类别", ["Technology", "Furniture", "Office Supplies"])
     Sub_Category = st.selectbox("子类别", [    "Phones", "Chairs", "Binders", "Paper", "Art", "Storage",
         "Tables", "Bookcases", "Appliances", "Fasteners", "Labels",
         "Envelopes", "Furnishings", "Accessories", "Supplies",
@@ -44,7 +47,10 @@ with col2:
     ])
     Region = st.selectbox("地区", ["Central", "West", "East", "South"])
     Segment = st.selectbox("客户类型", ["Consumer", "Corporate", "Home Office"])
-    Ship_Mode = st.selectbox("运输方式", ["Standard Class", "Second Class", "First Class", "Same Day"])
+        Ship_Mode = st.selectbox("运输方式", ["Standard Class", "Second Class", "First Class", "Same Day"])
+
+
+
 
 # 预测
 if st.button("预测利润", type="primary"):
