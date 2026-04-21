@@ -48,9 +48,9 @@ else:
     print("数据来源：CSV文件")
 
 # 目标变量 + 特征
-target = "Sales"
+target = "Profit"
 numeric_features = ["Quantity", "Discount", "Profit"]
-categorical_features = ["Category", "Sub-Category", "Region", "Segment", "Ship Mode"]
+categorical_features = ["Category", "Sub-Category", "Region", "Segment"]
 
 X = df[numeric_features + categorical_features]
 y = df[target]
