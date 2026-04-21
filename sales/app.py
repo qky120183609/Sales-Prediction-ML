@@ -77,7 +77,6 @@ if st.button("预测利润", type="primary"):
             "Quantity": [Quantity],
             "Discount": [d],
             "Avg_Unit_Price": [Avg_Unit_Price],
-            "Profit": [0],
             "Category": [Category],
             "Sub-Category": [Sub_Category],
             "Region": [Region],
