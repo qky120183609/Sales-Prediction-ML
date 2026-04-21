@@ -6,7 +6,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # 页面配置
-st.set_page_config(page_title="线下零售预测", layout="centered")
+st.set_page_config(page_title="线下零售利润预测与折扣优化", layout="centered")
 
 # 背景色（淡蓝）
 st.markdown("""
