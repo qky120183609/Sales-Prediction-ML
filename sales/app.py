@@ -91,7 +91,7 @@ if st.button("预测利润", type="primary"):
     elif diff < 0:
         st.warning(f"模型预测利润小于数学利润，模型认为该条件不能获得的足够的数学利润，若差值较多需要调整变为更低利润")
     else:
-        st.info(f"与模型预测完全相符")=
+        st.info(f"与模型预测完全相符")
     
     st.divider()
     
