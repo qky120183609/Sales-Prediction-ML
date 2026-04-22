@@ -95,8 +95,6 @@ if st.button("预测利润", type="primary"):
     else:
         st.success(f"模型预测与数学利润一致，定价合理")
     
-    st.divider()
-    
     # 推荐最佳地区
     best_region = None
     best_profit = -float("inf")
