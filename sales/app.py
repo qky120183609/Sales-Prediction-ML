@@ -80,18 +80,18 @@ if st.button("预测利润", type="primary"):
     
     col_a, col_b = st.columns(2)
     with col_a:
-        st.metric("📐 数学利润", f"¥ {round(formula_profit, 2)}")
-        st.metric("🤖 模型预测利润", f"¥ {round(profit, 2)}", delta=f"{round(diff, 2)}")
+        st.metric(" 数学利润", f"¥ {round(formula_profit, 2)}")
+        st.metric(" 模型预测利润", f"¥ {round(profit, 2)}", delta=f"{round(diff, 2)}")
     with col_b:
-        st.metric("💰 毛利率", f"{Gross_Margin:.1%}")
-        st.metric("📊 销售额", f"¥ {round(Actual_Price * Quantity, 2)}")
+        st.metric(" 毛利率", f"{Gross_Margin:.1%}")
+        st.metric(" 销售额", f"¥ {round(Actual_Price * Quantity, 2)}")
     
     if diff > 0:
         st.success(f"模型预测利润 > 数学利润，相差 ¥{round(diff, 2)}")
-        st.info("💡 建议：历史数据显示同类产品利润更高，可尝试适当涨价")
+        st.info(" 建议：历史数据显示同类产品利润更高，可尝试适当涨价")
     elif diff < 0:
         st.warning(f"模型预测利润 < 数学利润，相差 ¥{round(abs(diff), 2)}")
-        st.info("💡 建议：历史数据显示同类产品利润更低，建议适当降价或调整折扣")
+        st.info(" 建议：历史数据显示同类产品利润更低，建议适当降价或调整折扣")
     else:
         st.success(f"模型预测与数学利润一致，定价合理")
     
@@ -118,6 +118,6 @@ if st.button("预测利润", type="primary"):
             best_region = r
     
     if best_region != Region:
-        st.info(f"📍 提示：**{best_region}** 地区可获得更高利润（¥{round(best_profit, 2)}）")
+        st.info(f" 提示：**{best_region}** 地区可获得更高利润（¥{round(best_profit, 2)}）")
     else:
         st.success(f"当前地区已是利润最优选择！")
